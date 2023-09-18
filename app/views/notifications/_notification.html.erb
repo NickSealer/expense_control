@@ -1,0 +1,13 @@
+<div id="<%= dom_id notification %>" class="notification-card read_<%= notification.read %>">
+  <%= link_to notification.url, class:  "notification-url-js", data: { id: notification.id } do %>
+    <section>
+      <p><%= notification.id %> <%= notification.message %></p>
+      <span class="read">Read: <%= notification.read_at&.strftime('%y/%m/%d %T') %></span>
+      <span class="time-ago"><%= time_ago_in_words(notification.created_at) %></span>
+    </section>
+  <% end %>
+  <span class="read_<%= notification.read %> notification-actions" data-id="<%= notification.id %>">
+    <span id="read_<%= notification.id %>" class="notification-option-js" data-id="<%= notification.id %>" data-action="update">Mark as read</span>
+    <span id="delete_<%= notification.id %>" class="notification-option-js" data-id="<%= notification.id %>" data-action="delete">Delete</span>
+  </span>
+</div>
