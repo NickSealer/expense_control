@@ -1,0 +1,140 @@
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="center">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="wrapper">
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center">
+            <%= link_to image_tag("https://as.com/meristation/imagenes/2018/10/12/noticias/1539332350_533166_1539332526_noticia_normal.jpg", style: "border-radius: 5px; display: block; border:0; width:100%;", alt:"#{ENV["APP_NAME"]}",
+            title:"#{ENV["APP_NAME"]}"), expenses_url, class: "navbar-brand", target: "_blank"%>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFF" align="center" style="padding: 0 10px 0 10px;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="table-max">
+        <tr>
+          <td bgcolor="#FFF">
+            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">
+                  <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 28px; font-weight:normal; color: #2C3E50; margin:0; mso-line-height-rule:exactly;">
+                    <strong>Weekly report from
+                      <%= @month_name %></strong>
+                  </h2>
+                  <br>
+                </td>
+              </tr>
+              <tr align="center">
+                <p align="center">These are your expenses from
+                  <%= @month_name %>
+                  to date.</p>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" height="100%" valign="top" width="100%">
+            <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+              <tr>
+                <style amp-castom="amp-castom">
+                  #form1 .radio-selector [option][selected] {
+                    background-color: #f09870;
+                    color: #ffffff;
+                  }
+
+                  .amp-form-submit-success .hidden-block {
+                    display: none;
+                  }
+
+                  .time-button {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                  }
+
+                  .time-button li {
+                    display: inline-block;
+                    margin-bottom: 5px;
+                  }
+
+                  .time-button span {
+                    display: inline-block;
+                    background: #F4F4F4;
+                    color: #0F0F0F;
+                    font-size: 16px;
+                    font-weight: bold;
+                    padding: 10px 43px;
+                    border-radius: 2px;
+                    cursor: pointer;
+                    min-width: 96px;
+                  }
+
+                  .time-button span.active {
+                    background: #bae8e8;
+                    color: #272643;
+                  }
+
+                  .time-button span:hover {
+                    background: #bae8e8;
+                    color: #272643;
+                    transition: 0.7s;
+                  }
+
+                  @media only screen and (max-width: 600px) {
+                    .time-button li span {
+                      display: inline-block;
+                      background: #F4F4F4;
+                      color: #0F0F0F;
+                      font-size: 16px;
+                      font-weight: bold;
+                      padding: 9px 16px;
+                      border-radius: 5px;
+                      cursor: pointer;
+                    }
+                  }
+                </style>
+                <form id="form1" method="post" action-xhr="https://stripo.email/amp/v1/api/public/date">
+                  <div class="hidden-block">
+                    <div align="center">
+                      <ul class="time-button">
+                        <% @expenses.each do |expense| %>
+                          <li>
+                            <span role="button" tabindex="1" title=<%= expense.detail %>>
+                              <%= number_to_currency(expense.value) %><br><hr>
+                              <%= expense.created_at.strftime("%Y-%m-%d") %>
+                            </span>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </form>
+                <br>
+              </tr>
+              <tr>
+                <td align="center" style="border-radius: 3px; max-width:20%;" bgcolor="#26d0ae">
+                  <%= link_to 'More Info', summary_details_expenses_url(month: @date.month, year: @date.year), title: "More Info", target: "_blank", style:"font-family: Helvetica, Arial, sans-serif; font-size: 15px; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 20px; border: 1px solid #26d0ae;
+                  display: block;", class:"mobile-btn" %>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <td align="center" height="50" style="height:50px; font-size: 0;">&nbsp;</td>
+    <tr>
+      <td align="center" bgcolor="#2C3E50"></td>
+    </tr>
+  </table>

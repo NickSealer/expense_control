@@ -1,0 +1,41 @@
+<div class="form-title text-center text-info divider" style="margin-top: 0px;">
+  <h3>Total by Year</h3>
+</div>
+<div class="col-12">
+  <div class="row">
+    <% @expenses.each do |expense| %>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="margin-bottom: 45px;">
+      <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+      <div class="mainflip">
+        <div class="frontside">
+          <div class="card">
+            <div class="card-body text-center">
+              <h4 class="card-title"><%= expense.year %></h4>
+              <%= image_tag 'year.jpg', class:'rounded img-fluid year-img' %>
+              <p class="card-text"></p>
+              <%= link_to icon('fas fa', 'plus'), summary_details_expenses_path(year: expense.year), class: 'btn btn-info btn-sm' %>
+            </div>
+            <div class="card-footer text-muted">
+              Total expenses in <%= expense.year %> : <%= number_to_currency(expense.total_year) %>
+            </div>
+          </div>
+        </div>
+        <div class="backside">
+          <div class="card">
+            <div class="card-body text-center">
+              <h4 class="card-title"><%= link_to "#{ expense.year }", summary_details_expenses_path(year: expense.year), class: 'btn btn-outline-light' %></h4>
+                <p class="card-text">Total expenses in <%= expense.year %> : <%= number_to_currency(expense.total_year) %></p>
+                <p class="card-text">Expenses : <%= expense.quantity %></p>
+              </div>
+              <div class="card-footer text-muted text-center">
+                <%= link_to 'Details', summary_details_expenses_path(year: expense.year), class: 'btn btn-outline-light' %>
+                <%= link_to 'PDF', summary_details_expenses_path(year: expense.year, format: :pdf), target: '_blank', class: 'btn btn-outline-light' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

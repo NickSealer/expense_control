@@ -1,0 +1,37 @@
+<br>
+<h1 align="center"><%= params[:month].present? ? Date::MONTHNAMES[params[:month].to_i] : params[:year] %> Sumary Report</h1>
+<br>
+<div class="row">
+    <div class="col-3">
+      <button type="button" class="btn btn-outline-primary float-left" style="width: 150px;">Lower<br><%= number_to_currency(@expenses.minimum(:value)) %></button>
+    </div>
+    <div class="col-6">
+      <h4 align="center"><%= "#{@expenses.count} Total Expenses" %></h4>
+      <h4 align="center"><%= number_to_currency(@expenses.sum(:value)) %></h4>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-outline-danger float-right" style="width: 150px;">Higger<br><%= number_to_currency(@expenses.maximum(:value)) %></button>
+    </div>
+  </div>
+<hr>
+<table class="table table-sm table-striped">
+  <thead class="bg-success" align="center" style="color: white;">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Value</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody class="table-success" align="center">
+    <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.date %></td>
+      <td><%= number_to_currency(expense.value) %></td>
+      <td><%= expense.detail %></td>
+      <td><%= expense.category.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br><hr>

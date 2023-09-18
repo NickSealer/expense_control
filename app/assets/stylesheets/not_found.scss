@@ -1,0 +1,110 @@
+// body {
+//   background-image: url('404.jpg') !important;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   background-repeat: round;
+//   background-color: #fff;
+//   color: #333;
+//   margin: 50px;
+//   font-family: verdana, arial, helvetica, sans-serif;
+//   font-size: 13px;
+//   line-height: 18px;
+// }
+
+// .navbar {
+//   z-index: 1000;
+//   position: relative;
+//   top: -30px;
+// }
+
+// .bg-info {
+//   background-color: transparent !important;
+// }
+
+// .nav-link {
+//   color: transparent !important;
+// }
+
+// .navbar-brand,
+// .navbar-text {
+//   display: none;
+// }
+
+// .dropdown-menu {
+//   background-color: transparent !important;
+// }
+
+// .dropdown-item:hover {
+//   background-color: transparent !important;
+//   color: white;
+// }
+
+// .dropdown-item {
+//   color: transparent;
+// }
+
+// .footer {
+//   background-color: transparent !important;
+//   margin-top: 18%;
+//   z-index: -1;
+// }
+
+// .text h1 {
+//   color: #011718;
+//   font-size: 15em;
+//   margin-top: -70px;
+//   text-align: center;
+//   text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.7), -10px 10px 0px rgba(0, 0, 0, 0.4), -15px 15px 0px rgba(0, 0, 0, 0.2);
+//   font-family: monospace;
+//   font-weight: bold;
+// }
+
+// .text h2 {
+//   color: #0e0d12;
+//   font-size: 5em;
+//   text-shadow: -5px 5px 0px rgba(48, 52, 80, 0.8);
+//   text-align: center;
+//   font-family: monospace;
+//   font-weight: bold;
+// }
+
+// .torch {
+//   margin: -300px 0 0 -300px;
+//   width: 500px;
+//   height: 500px;
+//   box-shadow: 0 0 0 9999em #000000f7;
+//   opacity: 1;
+//   border-radius: 50%;
+//   position: fixed;
+//   background: rgba(0, 0, 0, 0.3);
+
+//   &:after {
+//     content: '';
+//     display: block;
+//     border-radius: 50%;
+//     width: 100%;
+//     height: 100%;
+//     top: 0px;
+//     left: 0px;
+//     box-shadow: inset 0 0 40px 2px #000,
+//       0 0 20px 4px rgba(13, 13, 10, 0.2);
+//   }
+// }
+
+// .nav-link:hover {
+//   color: white !important;
+// }
+
+// .footer {
+//   text-align: center !important;
+//   color: white;
+//   width: 100%;
+// }
+
+// .dropdown-item:hover {
+//   transform: translateY(-5px);
+//   transition: .3s;
+//   box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, .50);
+//   border-radius: 5px;
+// }
+

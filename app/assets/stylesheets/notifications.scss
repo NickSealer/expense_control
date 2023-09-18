@@ -1,0 +1,66 @@
+.notification-content {
+  position: absolute;
+  top: 97px;
+  right: 113px;
+  border: 2px solid #c4c4c4;
+  width: 300px;
+  max-width: 300px;
+  max-height: 400px;
+  overflow-y: scroll;
+  display: none;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.notification-card { 
+  section {
+    padding: 8px 8px 20px 8px;
+    .time-ago {
+      float: right;
+    }
+    .read {
+      float: left;
+      font-size: 10px;
+    }
+  }
+}
+
+.read_false {
+  background-color: #17a2b8;
+  section {
+    color: white;
+  }
+    section:hover {
+      color: black;
+      background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.read_true {
+  background-color: white;
+  a {
+    color: black;
+  }
+}
+
+.notification-actions {
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #c4c4c4;
+  display: inline-block;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.notification-option-js {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+.notification_count {
+  display: table-caption;
+  font-size: 15px;
+}

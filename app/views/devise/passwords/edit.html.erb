@@ -1,0 +1,42 @@
+<div class="container login_container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card login_card">
+      <div class=" card-header login_card-header">
+        <h3>Change your password</h3>
+        <div class="d-flex justify-content-end social_icon">
+					<!-- <span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span> -->
+          <%= link_to "Login", new_user_session_path, class: 'btn login_btn', title: "Login" %>
+          <%= link_to "Sign up", new_user_registration_path, class: 'btn login_btn', title: "Sign up" %>
+          <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: 'btn login_btn', title: "Sign in with Google" %>
+				</div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+      <div class="card-body">
+        <form>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><i class="fas fa-key"></i></span> -->
+            </div>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "password (#{ @minimum_password_length } characters minimum)" %>
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><i class="fas fa-key"></i></span> -->
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "password confirmation" %>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Change my password", class:"btn login_btn float-right" %>
+					</div>
+        </form>
+      </div>
+      <%= render "devise/shared/card_footer"%>
+      <% end %>
+    </div>
+  </div>
+</div>

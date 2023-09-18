@@ -1,0 +1,96 @@
+<%= form_for @budget do |budget_form| %>
+  <% if @budget.errors.any? %>
+  <div class="alert-danger errors" role="alert">
+    <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+    <ul>
+      <% @budget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="form-div">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <%= budget_form.date_field :from_date, class: 'form-control datepicker' %>
+      </div>
+      <div class="form-group col-md-4">
+        <%= budget_form.date_field :to_date, class: 'form-control datepicker' %>
+      </div>
+      <div class="form-group col-md-4">
+        <div class="custom-control custom-switch">
+          <%= budget_form.check_box :enable_dynamic_cash_flow, class: "custom-control-input" %>
+          <label class="custom-control-label" style="color: white;" for="budget_enable_dynamic_cash_flow">Dynamyc cash flow</label>
+        </div>
+      </div>
+    </div>
+    <h3 style="color: white;">Revenues</h3>
+    <div class="form-row charge-row">
+      <div class="form-group col-md-12">
+        <span class="btn save_btn float-left js-add-revenue" style="cursor: pointer;">Add Revenue</span>
+        <span class="btn save_btn float-left js-remove-revenue" style="cursor: pointer;">Remove rows</span>
+      </div>
+    </div>
+
+    <%= budget_form.fields_for :revenues do |revenue_form| %>
+      <div class="form-row revenue-row">
+        <div class="form-group col-md-3">
+            <%= revenue_form.text_field :value, class: 'form-control', placeholder: 'Value', required: true %>
+        </div>
+        <div class="form-group col-md-5">
+            <%= revenue_form.text_field :concept, class: 'form-control', placeholder: 'Concept', required: true %>
+        </div>
+        <div class="form-group col-md-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text">Type</label>
+            </div>
+            <%= revenue_form.select :category, Revenue.categories.keys, { include_blank: false }, { class:"custom-select" } %>
+          </div>
+        </div>
+        <div class="form-group col-md-1" style="color: white;">
+          Delete: <%= revenue_form.check_box :_destroy %>
+        </div>
+      </div>
+    <% end %>
+
+    <h3 style="color: white;">Charges</h3>
+    <div class="form-row charge-row">
+      <div class="form-group col-md-12">
+        <span class="btn save_btn float-left js-add-charge" style="cursor: pointer;">Add Charge</span>
+        <span class="btn save_btn float-left js-remove-charge" style="cursor: pointer;">Remove rows</span>
+      </div>
+    </div>
+
+    <%= budget_form.fields_for :charges do |charge_form| %>
+      <div class="form-row charge-row">
+        <div class="form-group col-md-3">
+            <%= charge_form.text_field :value, class: 'form-control', placeholder: 'Value', required: true %>
+        </div>
+        <div class="form-group col-md-5">
+            <%= charge_form.text_field :concept, class: 'form-control', placeholder: 'Concept', required: true %>
+        </div>
+        <div class="form-group col-md-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text">Type</label>
+            </div>
+            <%= charge_form.select :category, Charge.categories.keys, { include_blank: false }, { class:"custom-select" } %>
+          </div>
+        </div>
+        <div class="form-group col-md-1" style="color: white;">
+          Delete: <%= charge_form.check_box :_destroy, class: 'form-group' %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-footer">
+      <button type="submit" class="btn save_btn float-left" title="Save">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+      <%= link_to categories_path, class: 'btn back_btn float-right', title: "Back" do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

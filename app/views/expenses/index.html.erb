@@ -1,0 +1,53 @@
+<div class="card text-center border-info mb-3">
+  <div class="card-header card-title text-info">
+    <h1>Expenses</h1>
+    <div class="float-left">
+      <%= form_tag(expenses_path, method: :get, class: "form-inline my-2 my-lg-0") %>
+      <%= text_field_tag(:search, params[:search], {class: "form-control mr-sm-2", placeholder: "Search"}) %>
+      <%= select_tag(:category, select_category_options(current_user, @category), { include_blank: 'Select category', class: 'custom-select mr-sm-2' }) %>
+      <button class="btn btn-outline-info" type="submit">
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="float-right">
+      <%= link_to new_expense_path, class: 'btn btn-outline-success float-right', title:"New Expense" do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-responsive-xl display" id="expense-table">
+      <thead>
+        <tr>
+          <th>Detail</th>
+          <th>Value</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Created</th>
+          <th>Updated</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.detail %></td>
+          <td><%= number_to_currency(expense.value) %></td>
+          <td><%= expense.link_to_category %></td>
+          <td><%= expense.date %></td>
+          <td><%= expense.format_date(expense.created_at) %></td>
+          <td><%= expense.format_date(expense.updated_at) %></td>
+          <td>
+            <%= expense.modal_button %>
+            <%= render "expenses_modal", expense: expense %>
+            <%= expense.link_to_edit %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

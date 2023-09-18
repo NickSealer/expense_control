@@ -1,0 +1,165 @@
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td align="center">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="wrapper">
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center">
+            <%= link_to image_tag("https://as.com/meristation/imagenes/2018/10/12/noticias/1539332350_533166_1539332526_noticia_normal.jpg", style: "border-radius: 5px; display: block; border:0; width:100%;", alt:"#{ENV["APP_NAME"]}",
+            title:"#{ENV["APP_NAME"]}"), expenses_url, class: "navbar-brand", target: "_blank"%>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFF" align="center" style="padding: 0 10px 0 10px;">
+      <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="table-max">
+        <tr>
+          <td bgcolor="#FFF">
+            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">
+                  <h2 style="font-family: Helvetica, Arial, sans-serif; font-size: 28px; font-weight:normal; color: #2C3E50; margin:0; mso-line-height-rule:exactly;">
+                    <strong>Expense
+                      <%= @expense.id %>
+                    </strong>
+                  </h2>
+                </td>
+              </tr>
+              <tr align="center">
+                <p align="center">You have registered a new expense:</p>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" height="100%" valign="top" width="100%">
+            <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+              <tr>
+                <td align="center" valign="top" style="font-size:0;">
+                  <div style="display:inline-block; max-width:50%; min-width:280px; vertical-align:top; width:100%;" class="wrapper wrapper-ipad">
+                    <table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:280px;" class="wrapper wrapper-ipad">
+                      <tr>
+                        <td align="center" valign="top">
+                          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                              <td>
+                                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                  <tr>
+                                    <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" style="font-family: Arial, sans-serif; font-size: 20px; color: #2C3E50;" bgcolor="#FFF">Expense</td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF"></td>
+                                  </tr>
+                                  <tr>
+                                    <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF">
+                                      <strong>Detail:
+                                      </strong><%= @expense.detail %></td>
+                                  </tr>
+                                  <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF">
+                                    <strong>Value:
+                                    </strong>
+                                    <%= number_to_currency(@expense.value) %></td>
+                                  <tr></tr>
+                                  <tr>
+                                    <td align="right">
+                                      <table role="presentation" border="0" cellspacing="0" cellpadding="0" class="mobile-btn-container">
+                                        <tr>
+                                          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td align="center" height="50" style="height:50px; font-size: 0;">&nbsp;</td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div style="display:inline-block; max-width:50%; min-width:280px; vertical-align:top; width:100%;" class="wrapper wrapper-ipad">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td>
+                          <table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:280px; float: right;" class="wrapper wrapper-ipad">
+                            <tr>
+                              <td align="center" valign="top">
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                  <tr>
+                                    <td>
+                                      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                        <tr>
+                                          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td align="left" style="font-family: Arial, sans-serif; font-size: 20px; color: #2C3E50;" bgcolor="#FFF">Info</td>
+                                        </tr>
+                                        <tr>
+                                          <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF"></td>
+                                        </tr>
+                                        <tr>
+                                          <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF">
+                                            <strong>Created at:</strong>
+                                            <%= @expense.created_at %></td>
+                                        </tr>
+                                        <tr>
+                                          <td align="left" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #2C3E50;" bgcolor="#FFF">
+                                            <strong>Created by:
+                                            </strong><%= @user %></td>
+                                        </tr>
+                                        <tr>
+                                          <td align="center" height="25" style="height:25px; font-size: 0;">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td align="right">
+                                            <table role="presentation" border="0" cellspacing="0" cellpadding="0" class="mobile-btn-container"></table>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td align="center" height="50" style="height:50px; font-size: 0;">&nbsp;</td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="border-radius: 3px; max-width:20%;" bgcolor="#26d0ae">
+                  <%= link_to 'More Info', @expense, title: "More Info", target: "_blank", style:"font-family: Helvetica, Arial, sans-serif; font-size: 15px; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 20px; border: 1px solid #26d0ae;
+                  display: block;", class:"mobile-btn" %>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <td align="center" height="50" style="height:50px; font-size: 0;">&nbsp;</td>
+    <tr>
+      <td align="center" bgcolor="#2C3E50"></td>
+    </tr>
+  </table>

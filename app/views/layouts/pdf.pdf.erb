@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <%= favicon_link_tag wicked_pdf_asset_base64('favicon.jpg') %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="header" align="center">
+    <div class="">
+      <%= image_tag wicked_pdf_asset_base64('background.jpg'), style: "color: #FFFFFF; width:392px; height:200px; border-radius: 10px;", title: "#{ENV["APP_NAME"]}" %>
+    </div>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+  <div align="center">
+    <small>
+      Powered by Nick Fontecha - nickfontechav@gmail.com
+    </small>
+  </div>
+</body>
+
+</html>

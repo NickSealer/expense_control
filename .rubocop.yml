@@ -1,0 +1,53 @@
+# Relaxed.Ruby.Style
+## Version 2.7.2
+require: rubocop-rails
+require: rubocop-rspec
+AllCops:
+  SuggestExtensions: false
+  TargetRubyVersion: 2.7
+  TargetRailsVersion: 5.2
+  UseCache: true
+  Exclude:
+    - '**/assets/**/*'
+    - '**/javascript/**/*'
+    - '**/views/**/*'
+    - '**/bin/**/*'
+    - '**/coverage/**/*'
+    - '**/db/migrate/*'
+    - '**/db/**/schema.rb'
+    - '**/log/**/*'
+    - '**/public/**/*'
+    - '**/storage/**/*'
+    - '**/script/**/*'
+    - '**/vendor/**/*'
+    - '**/tmp/**/*'
+    - '**/node_modules/**/*'
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Layout/LineLength:
+  Max: 210
+Style/NumericLiterals:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 50
+Metrics/AbcSize:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Lint/MissingSuper:
+  Exclude:
+    - 'app/services/**/*'
+RSpec/ContextWording:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Max: 5
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/NestedGroups:
+  Max: 5
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+RSpec/FactoryBot/CreateList:
+  Enabled: false

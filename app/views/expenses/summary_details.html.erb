@@ -1,0 +1,5 @@
+<% if !params[:month].present? && params[:year].present? %>
+  <%= render 'expenses/details/year' %>
+<% elsif params[:month].present? && params[:year].present? %>
+  <%= render 'expenses/details/month' %>
+<% end %>

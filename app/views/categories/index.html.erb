@@ -1,0 +1,54 @@
+<div class="card text-center border-info mb-3">
+  <div class="card-header card-title text-info">
+    <h1>Categories</h1>
+    <div class="float-left">
+      <%= form_tag(categories_path, method: :get, class: "form-inline my-2 my-lg-0") %>
+      <%= text_field_tag(:search, params[:search], {class: "form-control mr-sm-2", placeholder: "Search"}) %>
+      <button class="btn btn-outline-info my-2 my-sm-0 mr-sm-2" type="submit">
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="float-right">
+      <%= link_to new_category_path, class: 'btn btn-outline-success float-right', title:"New Category" do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover table-responsive-xl display" id="category-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Parent Category</th>
+          <th>Expenses</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td><%= category.link_to_parent %></td>
+          <td><%= category.link_to_expenses %></td>
+          <td>
+            <button type="button" title="Show category <%= category.id %>" class="btn btn-outline-info" data-toggle="modal" data-target="#modal<%= category.id %>">
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </button>
+            <%= render "categories_modal", category: category %>
+            <%= link_to edit_category_path(category), class: 'btn btn-outline-primary', title:"Update category #{category.id}" do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <% end %>
+            <button type="button" name="Delete category <%= category.id %>" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete_modal<%= category.id %>">
+              <i class="fa fa-trash-o"></i>
+            </button>
+            <%= render "categories_delete_modal", category: category %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+  <div class="card-footer"></div>
+</div>

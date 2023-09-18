@@ -1,0 +1,39 @@
+<div class="card text-center border-info mb-3">
+  <div class="card-header card-title text-info">
+    <h1>Export to CSV</h1>
+  </div>
+  <div class="card-body">
+    <%= form_tag(data_to_csv_path(format: 'csv'), method: :get, class: '') do %>
+    <div class="row">
+      <div class="col-md-6 offset-3">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="from-date">From date</label>
+            <input type="date" class="form-control" id="from_date" name="from_date" required="required">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="to-date">To date</label>
+            <input type="date" class="form-control" id="to_date" name="to_date" value=<%= Date.today %>>
+          </div>
+        </div>
+        <div class="col-md-6 offset-3">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <select class="custom-select" name="export_type" required="required">
+                <option value="0" disabled="disabled" selected="selected">Select type</option>
+                <option value="category">Category</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <button type="submit" id="export-button" class="btn btn-outline-success" title="Export">
+            <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

@@ -1,0 +1,39 @@
+<div class="card-deck card-custom">
+  <div class="card border-info mb-3 card-height" style="">
+    <div class="card-header card-title text-info">
+      <h4>
+        <strong>Expense <%= @expense.id %></strong>
+      </h4>
+    </div>
+    <div class="card-body text-info">
+      <li class="list-group-item">
+        <strong>Detail:
+        </strong><%= @expense.detail %></li>
+      <li class="list-group-item">
+        <strong>Value:
+        </strong><%= number_to_currency(@expense.value) %></li>
+      <li class="list-group-item">
+        <strong>Category:
+        </strong><%= @expense.link_to_category %></li>
+      <li class="list-group-item">
+        <strong>Date:
+        </strong><%= @expense.date %></li>
+    </div>
+    <div class="card-footer">
+      <%= link_to edit_expense_path(@expense), class: 'btn btn-outline-primary float-left', style: "margin-left: 5px;", title:"Update expense #{@expense.id}" do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to expenses_path, class: 'btn btn-outline-dark float-right', title:"Back" do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to summary_expenses_path(year: @expense.year), class: 'btn btn-outline-info float-right mr-sm-2', style: "margin-left: 5px;", title:"See at Reports" do %>
+        <i class="fa fa-table" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <% if @expense.avatar.attached? %>
+    <div class="img-div">
+      <%= image_tag @expense.avatar, class: 'custom-img' %>
+    </div>
+  <% end %>
+</div>

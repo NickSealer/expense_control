@@ -1,0 +1,75 @@
+<%= hidden_field_tag "current_user", @current_user.id %>
+<%= form_with(model: @expense, local: true) do |form| %>
+<% if @expense.errors.any? %>
+<div class="alert-danger errors" role="alert">
+  <h2> <%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+  <ul>
+    <% @expense.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-div">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.text_field :detail, class: "form-control", placeholder: "Detail", required: true %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= text_field_tag "search_category", @expense.category ? @expense.category.name : '', {class: "form-control", placeholder: "Search category", required: true} %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.text_field :value, class: "form-control", placeholder: "Ex: 10000", onkeypress: "if ( isNaN( String.fromCharCode(event.keyCode) )) return false;", required: true %>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.date_field :date, class: "form-control datepicker", required: true %>
+    </div>
+    <div class="form-group col-md-6" style="display: none;" id="div_for_select">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text">Categories</label>
+        </div>
+        <select class="custom-select" id="expense_category_id" name="expense[category_id]"></select>
+        <div class="input-group-prepend">
+          <label class="input-group-text">
+            <a href="<%= new_category_path %>" style="color: white; text-decoration: none; border-radius: 0.25rem;">Create category</a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01"></span>
+        </div>
+        <div class="custom-file form-group form-control">
+          <%= form.file_field :avatar, class:"custom-file-input", id:"inputGroupFile01", aria:{describedby:"inputGroupFileAddon01"}%>
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @expense.avatar.attached? %>
+  <div class="">
+    <%= image_tag @expense.avatar, class:'category-img', alt:@expense.id, title:@expense.id, width:500 %>
+  </div>
+  <% end %>
+  <div class="form-footer">
+    <button type="submit" class="btn save_btn float-left" title="Save">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+    <%= link_to expenses_path, class: 'btn back_btn float-right', title: "Back" do %>
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    <% end %>
+    <% if @expense.nil? != false %>
+    <%= link_to @expense, class: 'btn show_btn float-right', style: "margin-left: 5px;", title: "Show" do %>
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<% end %>

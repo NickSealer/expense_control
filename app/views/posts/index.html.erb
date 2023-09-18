@@ -1,0 +1,32 @@
+<h1>New post</h1>
+<%= render "form", post: Post.new %>
+<br>
+
+<div class="posts">
+  <%= turbo_stream_from(:posts_channel) %>
+  <%# turbo frame start %>
+    <%= render 'posts/posts' %>
+  <%# turbo frame end %>
+</div>
+<br>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Created at</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <%= turbo_stream_from(:table_posts_channel) %>
+    <tbody id="broadcast_body">
+      <% @posts.each do |post| %>
+        <tr id="<%= dom_id post %>">
+          <td><%= post.id %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.message %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

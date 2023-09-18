@@ -1,0 +1,47 @@
+<div class="container login_container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card login_card">
+      <div class=" card-header login_card-header">
+        <h3>Sign up</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <!-- <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span> -->
+          <%= link_to "Login", new_user_session_path, class: 'btn login_btn', title: "Login" %>
+          <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: 'btn login_btn', title: "Sign in with Google" %>
+        </div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="card-body">
+        <form>
+          <%= invisible_captcha %>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><i class="fas fa-user"></i></span> -->
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "email" %>
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><i class="fas fa-key"></i></span> -->
+            </div>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "password (#{ @minimum_password_length } characters minimum)" %>
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <!-- <span class="input-group-text"><i class="fas fa-key"></i></span> -->
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "password confirmation" %>
+          </div>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Sign up", class:"btn login_btn float-right" %>
+          </div>
+        </form>
+      </div>
+      <%= render "devise/shared/card_footer"%>
+      <% end %>
+    </div>
+  </div>
+</div>

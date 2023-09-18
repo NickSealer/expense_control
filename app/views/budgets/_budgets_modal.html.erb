@@ -1,0 +1,48 @@
+<div class="modal fade" id="modal<%= budget.id %>" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-info">
+        <h5 class="modal-title" id="">Budget: <%= budget.id %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card border-info mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="card-body text-info">
+                <h5 class="card-title">From: <%= budget.from_date %></h5>
+                <h5 class="card-title">To: <%= budget.to_date %></h5>
+                Dynamic Cash Flow: <%= budget.enable_dynamic_cash_flow %>
+                <ul class="list-group list-group-flush">
+                  <hr class="custom-hr">
+                  Monthly Estimated
+                  <li class="list-group-item no-border">Monthly Revenue: <b><%= number_to_currency(budget.monthly_revenue) %></b></li>
+                  <li class="list-group-item no-border">Monthly Charges: <b><%= number_to_currency(budget.monthly_charges) %></b></li>
+                  <li class="list-group-item no-border"><b>Monthly Budget: <%= number_to_currency(budget.estimated_monthly_balance) %></b></li>
+                  <hr class="custom-hr">
+                  Annual Estimated
+                  <li class="list-group-item no-border">Annual Revenue: <b><%= number_to_currency(budget.annual_revenue) %></b></li>
+                  <li class="list-group-item no-border">Annual Charges: <b><%= number_to_currency(budget.annual_charges) %></b></li>
+                  <li class="list-group-item no-border"><b>Annual Budged: <%= number_to_currency(budget.estimated_annual_balance) %></b></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" title="Close" data-dismiss="modal">
+          <i class="fa fa-window-close-o" aria-hidden="true"></i>
+        </button>
+        <%= link_to budget, class: "btn btn-outline-info", titel: "Show budget #{budget.id}" do %>
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to edit_budget_path(budget), class: "btn btn-outline-primary", titel: "Update budget #{budget.id}" do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

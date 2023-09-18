@@ -1,0 +1,8 @@
+<div class="card-footer">
+  <div class="d-flex justify-content-center links">
+    <strong>Don't have an account?</strong><%= link_to "Sign up", new_user_registration_path, class: '', title: "Sign up", style: "color: white;" %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: '', title: "Sign in with Google", style: "color: white;" %>
+  </div>
+</div>

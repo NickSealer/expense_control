@@ -1,0 +1,37 @@
+<div class="card-deck card-custom">
+  <div class="card border-info mb-3 card-height">
+    <div class="card-header card-title text-info">
+      <h4>
+        <strong><%= @category.name.capitalize %>
+          Category</strong>
+      </h4>
+    </div>
+    <div class="card-body text-info">
+      <li class="list-group-item">
+        <strong>Category:
+        </strong><%= @category.name %></li>
+      <li class="list-group-item">
+        <strong>Description:
+        </strong><%= @category.description %></li>
+      <li class="list-group-item">
+        <strong>Main category:
+        </strong><%= @category.link_to_parent %></li>
+      <li class="list-group-item">
+        <strong>Expenses:
+        </strong><%= @category.link_to_expenses %></li>
+    </div>
+    <div class="card-footer">
+      <%= link_to edit_category_path(@category), class: 'btn btn-outline-primary float-left', title:"Update category #{@category.id}" do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to categories_path, class: 'btn btn-outline-dark float-right', title:"Back" do %>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <% if @category.avatar.attached? %>
+    <div class="img-div">
+      <%= image_tag @category.avatar, class: 'custom-img' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="btn-group dropleft" id="notification-bell">
+  <button type="button" class="btn btn-info invisible-hover">
+    <i class="fa fa-bell-o" aria-hidden="true"></i>
+    <%= turbo_stream_from(:notifications) %>
+    <%= render 'notifications/count', user: current_user %>
+  </button>
+</div>

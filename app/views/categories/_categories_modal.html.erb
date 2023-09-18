@@ -1,0 +1,38 @@
+<div class="modal fade" id="modal<%= category.id %>" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-info">
+        <h5 class="modal-title" id="">Category: <%= category.name.capitalize %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card border-info mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-12">
+              <div class="card-body text-info">
+                <h5 class="card-title"><%= category.name.capitalize %></h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%= category.description %></li>
+                  <li class="list-group-item"><%= category.parent ? category.parent.name : '' %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" title="Close" data-dismiss="modal">
+          <i class="fa fa-window-close-o" aria-hidden="true"></i>
+        </button>
+        <%= link_to category, class: "btn btn-outline-info", titel: "Show category #{category.id}" do %>
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to edit_category_path(category), class: "btn btn-outline-primary", titel: "Update category #{category.id}" do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

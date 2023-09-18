@@ -1,0 +1,78 @@
+.save_btn {
+  color: #28a745;
+  margin-left: 5px;
+  background-color: transparent;
+  border: 1px solid #28a745;
+}
+
+.save_btn:hover {
+  color: black;
+  background-color: #28a745;
+}
+
+.show_btn {
+  color: white;
+  margin-left: 5px;
+  background-color: #17a2b8;
+}
+
+.show_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.edit_btn {
+  color: white;
+  margin-left: 5px;
+  background-color: #007bff;
+}
+
+.edit_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.destroy_btn {
+  color: white;
+  margin-left: 5px;
+  background-color: #dc3545;
+}
+
+.destroy_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.back_btn {
+  color: white;
+  margin-left: 5px;
+  background-color: transparent;
+  border: 1px solid #2a8ec3
+}
+
+.back_btn:hover {
+  color: white;
+  background-color: #052135;
+}
+.btn:hover {
+  transform: translateY(-5px);
+  transition: .3s;
+  box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, .50);
+}
+
+.btn i {
+  transition: .3s;
+}
+
+.btn:hover i {
+  -webkit-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  transform: rotateX(360deg);
+  color: white;
+}
+
+.invisible-hover:hover {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}

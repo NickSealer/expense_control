@@ -1,0 +1,67 @@
+<% if user_signed_in? %>
+<%= hidden_field_tag "current_user", @current_user.id %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <%= link_to image_tag("logo.jpg", style: "border-radius: 5px;", size: '50x50', alt: "#{ENV["APP_NAME"]}", title: "#{ENV["APP_NAME"]}"), root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link btn', title: "Edit profile" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'New Expense', new_expense_path, class: 'nav-link btn', title: "New Expense" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Categories', categories_path, class: 'nav-link btn', title: "Categories" %>
+      </li>
+      <li class="nav-item dropright">
+        <a class="nav-link btn dropdown-toggle" href="#" role="button" id="dropdownExpense" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Expenses">
+          Expenses
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'List', expenses_path, class: 'dropdown-item', title: "Expenses" %>
+          <%= link_to 'Import CSV', import_csv_form_expenses_path, class: 'dropdown-item', title: "Import CSV" %>
+          <%= link_to 'Send Monthly Report', send_monthly_report_expenses_path, class: 'dropdown-item' %>
+        </div>
+      </li>
+      <li class="nav-item dropright">
+        <a class="nav-link btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Reports">
+          Summary
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "All years", summary_expenses_path(all_years: true), class: "dropdown-item", title: "All years" %>
+          <% @years.each do |year| %>
+            <%= link_to "Year #{year.year}", summary_expenses_path(year: year.year), class: "dropdown-item", title: "Year #{year.year}" %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Budgets', budgets_path, class: 'nav-link btn', title: "Budgets" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Export", export_path, class: "nav-link btn", title: "Export" %>
+      </li>
+      <li class="nav-item">
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link btn', title: "Logout" %>
+      </li>
+    </ul>
+
+    <%= render 'layouts/notifications' %>
+
+    <span class="navbar-text">
+      <% if current_user.avatar.attached? %>
+        <%= link_to image_tag(current_user.avatar, style: "border-radius: 50px;", alt: current_user.email, title: current_user.email, size: '50x50'), edit_user_registration_path, class: "btn-outline-info" %>
+      <% end %>
+    </span>
+  </div>
+</nav>
+<br><br>
+<div class="text-center" style="color: aliceblue;">
+  <h5><%= total_current_month(current_user) %></h5>
+</div>
+
+<%= render 'notifications/notification_content' %>
+
+<% end %>
