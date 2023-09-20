@@ -37,10 +37,6 @@ class Notification < ApplicationRecord
     broadcast_prepend_to(:notification_content, target: "notification-content-#{user.id}", partial: 'notifications/notification')
   end
 
-  def broadcast_update_notification
-    broadcast_replace_to(:notification_content, partial: 'notifications/notification')
-  end
-
   def read!
     update!(read: true, read_at: Time.zone.now)
   end

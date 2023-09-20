@@ -83,9 +83,9 @@ group :development, :test do
   gem 'pry'
 
   gem 'rails-controller-testing', '~> 1.0.5'
-  gem 'rspec', '~> 3.11'
-  gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
-  gem 'shoulda-matchers', '~> 5.2'
+  gem 'rspec', '~> 3.12'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
+  gem 'shoulda-matchers', '~> 5.3'
 
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

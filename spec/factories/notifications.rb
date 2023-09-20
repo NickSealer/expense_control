@@ -20,6 +20,9 @@
 #
 FactoryBot.define do
   factory :notification do
+    message { 'Notification message' }
+    url { 'https://example.com' }
     read { false }
+    association :user
   end
 end

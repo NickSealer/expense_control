@@ -21,5 +21,110 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:notification) { FactoryBot.build(:notification) }
+
+  describe 'ActiveRecord associations' do
+    it {  is_expected.to belong_to(:user) }
+  end
+
+  describe 'ActiveRecord indexes' do
+    it { is_expected.to have_db_index(:user_id) }
+  end
+
+  describe 'instance methods' do
+    describe '.read' do
+      it 'returns true' do
+        notification.save
+        notification.read!
+        expect(notification.read).to be_truthy
+      end
+    end
+  end
+
+  describe 'broadcasting callbacks' do
+    describe 'after_save' do
+      it 'creates notification' do
+        expect { notification.save }.to change(Notification, :count).by(1)
+      end
+
+      it 'broadcasting to notifications channel new count' do
+        expect {
+          notification.save
+        }.to broadcast_to(:notifications)
+
+        expect {
+          notification.save
+        }.to have_broadcasted_to(:notifications)
+
+        expect {
+          notification.save
+        }.to have_broadcasted_to(:notifications).exactly(1)        
+      end
+    end
+
+    describe 'after_create_commit' do
+      it 'creates notification' do
+        expect { notification.save }.to change(Notification, :count).by(1)
+      end
+
+      it 'broadcasting to notifications and notification_content channel new notification' do
+        expect {
+          notification.save
+        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+
+        expect {
+          notification.save
+        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+
+        expect {
+          notification.save
+        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+      end
+    end
+
+    describe 'after_update_commit' do
+      before { notification.save }
+
+      it 'updates notification as read' do
+        expect(notification.read!).to be_truthy
+      end
+
+      it 'broadcasting to notifications and notification_content channel read notification' do
+        expect {
+          notification.read!
+        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+
+        expect {
+          notification.read!
+        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+
+        expect {
+          notification.read!
+        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+      end
+    end
+
+    describe 'after_destroy_commit' do
+      before { notification.save }
+
+      it 'deletes the notification' do
+        expect(Notification.count).to eq(1)
+        expect { notification.destroy! }.to change(Notification, :count).by(-1)
+      end
+
+      it 'broadcasting to notifications and notification_content channel deleted notification' do
+        expect {
+          notification.destroy!
+        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+
+        expect {
+          notification.destroy!
+        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+
+        expect {
+          notification.destroy!
+        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+      end
+    end
+  end
 end
