@@ -10,7 +10,7 @@ class CategoriesQuery
   end
 
   def search(current_user, query)
-    @categories.where("name ILIKE '%#{query}%'").where(user_id: current_user.id)
-               .or(@categories.where("description ILIKE '%#{query}%'").where(user_id: current_user.id))
+    @categories.where('name ILIKE ?', "%#{query}%").where(user_id: current_user.id)
+               .or(@categories.where('name ILIKE ?', "%#{query}%").where(user_id: current_user.id))
   end
 end

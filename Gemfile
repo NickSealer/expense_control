@@ -87,6 +87,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
   gem 'shoulda-matchers', '~> 5.3'
 
+  gem 'brakeman'
+
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
@@ -98,6 +100,7 @@ group :development do
   gem 'annotate', '~> 3.0', '>= 3.0.3'
   gem 'graphiql-rails'
   gem 'web-console'
+  gem 'rusky'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

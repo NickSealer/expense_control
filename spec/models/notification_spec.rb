@@ -24,7 +24,7 @@ RSpec.describe Notification, type: :model do
   let(:notification) { FactoryBot.build(:notification) }
 
   describe 'ActiveRecord associations' do
-    it {  is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:user) }
   end
 
   describe 'ActiveRecord indexes' do
@@ -44,41 +44,41 @@ RSpec.describe Notification, type: :model do
   describe 'broadcasting callbacks' do
     describe 'after_save' do
       it 'creates notification' do
-        expect { notification.save }.to change(Notification, :count).by(1)
+        expect { notification.save }.to change(described_class, :count).by(1)
       end
 
       it 'broadcasting to notifications channel new count' do
-        expect {
+        expect do
           notification.save
-        }.to broadcast_to(:notifications)
+        end.to broadcast_to(:notifications)
 
-        expect {
+        expect do
           notification.save
-        }.to have_broadcasted_to(:notifications)
+        end.to have_broadcasted_to(:notifications)
 
-        expect {
+        expect do
           notification.save
-        }.to have_broadcasted_to(:notifications).exactly(1)        
+        end.to have_broadcasted_to(:notifications).exactly(1)
       end
     end
 
     describe 'after_create_commit' do
       it 'creates notification' do
-        expect { notification.save }.to change(Notification, :count).by(1)
+        expect { notification.save }.to change(described_class, :count).by(1)
       end
 
       it 'broadcasting to notifications and notification_content channel new notification' do
-        expect {
+        expect do
           notification.save
-        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+        end.to broadcast_to(:notifications).and broadcast_to(:notification_content)
 
-        expect {
+        expect do
           notification.save
-        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+        end.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
 
-        expect {
+        expect do
           notification.save
-        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+        end.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
       end
     end
 
@@ -90,17 +90,17 @@ RSpec.describe Notification, type: :model do
       end
 
       it 'broadcasting to notifications and notification_content channel read notification' do
-        expect {
+        expect do
           notification.read!
-        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+        end.to broadcast_to(:notifications).and broadcast_to(:notification_content)
 
-        expect {
+        expect do
           notification.read!
-        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+        end.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
 
-        expect {
+        expect do
           notification.read!
-        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+        end.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
       end
     end
 
@@ -108,22 +108,22 @@ RSpec.describe Notification, type: :model do
       before { notification.save }
 
       it 'deletes the notification' do
-        expect(Notification.count).to eq(1)
-        expect { notification.destroy! }.to change(Notification, :count).by(-1)
+        expect(described_class.count).to eq(1)
+        expect { notification.destroy! }.to change(described_class, :count).by(-1)
       end
 
       it 'broadcasting to notifications and notification_content channel deleted notification' do
-        expect {
+        expect do
           notification.destroy!
-        }.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+        end.to broadcast_to(:notifications).and broadcast_to(:notification_content)
 
-        expect {
+        expect do
           notification.destroy!
-        }.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
+        end.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
 
-        expect {
+        expect do
           notification.destroy!
-        }.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+        end.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
       end
     end
   end

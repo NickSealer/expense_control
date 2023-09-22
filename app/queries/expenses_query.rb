@@ -24,9 +24,9 @@ class ExpensesQuery
   def search(current_user, query = nil, category = nil)
     query_base = current_user.expenses.includes(:category)
     results = if query.present? && category.present?
-                query_base.where("detail ILIKE '%#{query}%'").where(category_id: category)
+                query_base.where('detail ILIKE ?', "%#{query}%").where(category_id: category)
               elsif query.present?
-                query_base.where("detail ILIKE '%#{query}%'").or(query_base.where(year: query.to_i))
+                query_base.where('detail ILIKE ?', "%#{query}%").or(query_base.where(year: query.to_i))
               elsif category.present?
                 query_base.where(category_id: category)
               end
