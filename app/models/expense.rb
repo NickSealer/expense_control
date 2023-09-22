@@ -35,7 +35,7 @@ class Expense < ApplicationRecord
   IMAGE_TYPES = ['.png', '.jpeg', '.jpg'].freeze
 
   belongs_to :user
-  belongs_to :category
+  belongs_to :category, counter_cache: true
   has_one_attached :avatar
 
   validates_presence_of :detail, :value, :date, :category_id
