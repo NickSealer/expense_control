@@ -6,7 +6,7 @@
       <button type="button" class="btn btn-outline-primary float-left" style="width: 150px;">Lower<br><%= number_to_currency(@expenses.minimum(:value)) %></button>
     </div>
     <div class="col-6">
-      <h4 align="center"><%= "#{@expenses.count} Total Expenses" %></h4>
+      <h4 align="center"><%= "#{@expenses.size} Total Expenses" %></h4>
       <h4 align="center"><%= number_to_currency(@expenses.sum(:value)) %></h4>
     </div>
     <div class="col-3">

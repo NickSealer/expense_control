@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   before_action :avatar, only: %i[create update]
 
   def index
-    categories = params[:search].present? ? CategoriesQuery.search(current_user, params[:search]) : current_user.categories.includes(:expenses).order(:name)
+    categories = params[:search].present? ? CategoriesQuery.search(current_user, params[:search]) : current_user.categories.includes(:parent).order(:name)
     @categories = categories.decorate
   end
 

@@ -77,7 +77,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
   gem 'pry-remote', '~> 0.1.8'
 
-  # gem 'bullet'
+  gem 'bullet'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.17'
   gem 'pry'
@@ -99,8 +99,8 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'annotate', '~> 3.0', '>= 3.0.3'
   gem 'graphiql-rails'
-  gem 'web-console'
   gem 'rusky'
+  gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
