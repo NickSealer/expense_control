@@ -1,6 +1,6 @@
 <%= turbo_stream_from(:notification_content) %>
 <div class="notification-content" id="notification-content-<%= current_user.id %>">
-  <% current_user.notifications.order(:id).reverse.each do |notification| %>
+  <% current_user.notifications.order(id: :desc).limit(10).each do |notification| %>
     <%= render 'notifications/notification', notification: notification %>
   <% end %>
 </div>

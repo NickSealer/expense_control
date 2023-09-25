@@ -105,25 +105,24 @@ RSpec.describe Notification, type: :model do
     end
 
     describe 'after_destroy_commit' do
-      before { notification.save }
+      before do
+        notification.save
+        FactoryBot.create(:notification, user: notification.user)
+      end
 
       it 'deletes the notification' do
-        expect(described_class.count).to eq(1)
+        expect(described_class.count).to eq(2)
         expect { notification.destroy! }.to change(described_class, :count).by(-1)
       end
 
       it 'broadcasting to notifications and notification_content channel deleted notification' do
         expect do
           notification.destroy!
-        end.to broadcast_to(:notifications).and broadcast_to(:notification_content)
+        end.to broadcast_to(:notifications).and broadcast_to(:notification_content).exactly(2)
 
         expect do
           notification.destroy!
-        end.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content)
-
-        expect do
-          notification.destroy!
-        end.to have_broadcasted_to(:notifications).exactly(1).and have_broadcasted_to(:notification_content).exactly(1)
+        end.to have_broadcasted_to(:notifications).and have_broadcasted_to(:notification_content).exactly(2)
       end
     end
   end
