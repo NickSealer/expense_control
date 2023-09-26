@@ -1,0 +1,55 @@
+.chatbox-content {
+  display: none;
+  border: 2px solid #c4c4c4;
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 100;
+  position: relative;
+  bottom: 50px;
+}
+
+.chatbox-actions {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chatbox-form {
+  display: none;
+
+}
+
+.chatbox-div {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.message {
+  background-color: #444654;
+  color: #f7f7f8;
+  padding: 15px 30px;
+  white-space: pre-line;
+}
+
+.request {
+  background-color: #343541;
+  color: #ececf1;
+  padding: 15px 30px;
+}
+
+.blink {
+  -webkit-animation-name: blinking;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes blinking {  
+  100% { opacity: 1.0; }
+  90% { opacity: 0.0; }
+}

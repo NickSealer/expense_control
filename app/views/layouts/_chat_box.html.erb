@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+  <div class="chatbox-div">
+    <div class="chatbox-content">
+      <%= render 'openai/messages' %>
+    </div>
+    <div class="chatbox-actions">
+      <div class="chatbox-form">
+        <%= render 'openai/form_chat' %>
+      </div>
+  
+      <div class="btn-group blink" id="chatbox-button">
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-comments-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

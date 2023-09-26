@@ -41,6 +41,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # OpenAI
+  controller :openai do
+    post :chat
+  end
+
   controller :exports do
     get :export
     get :data_to_csv
@@ -88,15 +93,7 @@ end
 #                                          DELETE   /users(.:format)                                                                                  users/registrations#destroy
 #                                          POST     /users(.:format)                                                                                  users/registrations#create
 #                              sidekiq_web          /user/sidekiq                                                                                     Sidekiq::Web
-#                                    posts GET      /posts(.:format)                                                                                  posts#index
-#                                          POST     /posts(.:format)                                                                                  posts#create
-#                                 new_post GET      /posts/new(.:format)                                                                              posts#new
-#                                edit_post GET      /posts/:id/edit(.:format)                                                                         posts#edit
-#                                     post GET      /posts/:id(.:format)                                                                              posts#show
-#                                          PATCH    /posts/:id(.:format)                                                                              posts#update
-#                                          PUT      /posts/:id(.:format)                                                                              posts#update
-#                                          DELETE   /posts/:id(.:format)                                                                              posts#destroy
-#                                     root GET      /                                                                                                 posts#index
+#                                     root GET      /                                                                                                 expenses#new
 #                 import_csv_form_expenses GET      /expenses/import_csv_form(.:format)                                                               expenses#import_csv_form
 #                    download_csv_expenses GET      /expenses/download_csv(.:format)                                                                  expenses#download_csv
 #                      import_csv_expenses POST     /expenses/import_csv(.:format)                                                                    expenses#import_csv
@@ -127,6 +124,10 @@ end
 #                                          PATCH    /categories/:id(.:format)                                                                         categories#update
 #                                          PUT      /categories/:id(.:format)                                                                         categories#update
 #                                          DELETE   /categories/:id(.:format)                                                                         categories#destroy
+#                        read_notification GET      /notifications/:id/read(.:format)                                                                 notifications#read
+#                             notification PUT      /notifications/:id(.:format)                                                                      notifications#update
+#                                          DELETE   /notifications/:id(.:format)                                                                      notifications#destroy
+#                                     chat POST     /chat(.:format)                                                                                   openai#chat
 #                                   export GET      /export(.:format)                                                                                 exports#export
 #                              data_to_csv GET      /data_to_csv(.:format)                                                                            exports#data_to_csv
 #                   search_api_v1_expenses GET      /api/v1/expenses/search(.:format)                                                                 api/v1/expenses#search

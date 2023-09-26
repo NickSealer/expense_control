@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_many :revenues, through: :budgets
   has_many :charges, through: :budgets
   has_many :notifications, dependent: :destroy
+  has_many :assistant_messages, dependent: :destroy
 
   validates :email, :password, presence: true, on: :create
   validates :email, uniqueness: true

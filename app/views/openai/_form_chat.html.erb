@@ -1,0 +1,9 @@
+<%= turbo_frame_tag 'chatbox_form' do %>
+  <% form_for :chatbox, url: chat_url, method: :post do |f| %>
+    <%= f.hidden_field :user, value: current_user.id %>
+    <%= f.text_field :content %>
+    <button type="submit" class="btn btn-success">
+      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    </button>
+  <% end %>
+<% end %>

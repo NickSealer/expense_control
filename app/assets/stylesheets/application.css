@@ -16,6 +16,7 @@
  *= require select2-bootstrap
  *= require custom
  *= require notifications
+ *= require chatbox
  *= require cards
  *= require login
  *= require buttons
