@@ -15,7 +15,7 @@ document.addEventListener("turbo:load", function() {
   // GET read notification
   $('.notification-url-js').click(function() {
     var id = $(this).attr('data-id');
-    var url = "/notifications/" + id + "/read" + "?user=" + user ;
+    var url = "/notifications/" + id + "/read" ;
 
     fetch(protocol + "//" + host + url)
     .then(res => {
@@ -27,30 +27,30 @@ document.addEventListener("turbo:load", function() {
   });
 
 // UPDATE or DELETE notification
-  $('.notification-option-js').click(function() {
-    var id = $(this).attr('data-id');
-    var action = $(this).attr('data-action');
-    var url = "/notifications/" + id + "?user=" + user ;
-    var method = ''; 
+  // $('.notification-option-js').click(function() {
+  //   var id = $(this).attr('data-id');
+  //   var action = $(this).attr('data-action');
+  //   var url = "/notifications/" + id + "?user=" + user ;
+  //   var method = ''; 
     
-    if (action === 'update') {
-      method = 'PUT';
-    } else if (action === 'delete') {
-      method = 'DELETE'
-    } else {
-      method = 'nil'
-    }
+  //   if (action === 'update') {
+  //     method = 'PUT';
+  //   } else if (action === 'delete') {
+  //     method = 'DELETE'
+  //   } else {
+  //     method = 'nil'
+  //   }
 
-    console.log(id, action, method)
+  //   console.log(id, action, method)
 
-    fetch(protocol + "//" + host + url, { method: method })
-    .then(res => res.json())
-    .then(data => {
-      console.log("response: ", data);
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  })
+  //   fetch(protocol + "//" + host + url, { method: method })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log("response: ", data);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   })
+  // })
 
 });

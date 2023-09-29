@@ -127,11 +127,11 @@ In this example there are:
    </div>
    ```
 4. Controller
-   I'm returning a JSON response, this could be anything you want
+   Responds as turbo_stream format. You can use update.turbo_stream.erb file or model callback as I did.
    ```ruby
    def update
      notification.read! unless notification.read
-     render json: { notification: notification }, status: :ok
+     respond_to(&:turbo_stream)
    end
    ```
    
@@ -144,9 +144,10 @@ In this example there are:
 3. View:
    Turbo searches the object dom id and remove the complete html piece of code
 4. Controller
+   Responds as turbo_stream format. You can use update.turbo_stream.erb file or model callback as I did.
    ```ruby
    def destroy
      notification.destroy!
-     render json: { notification: notification }, status: :ok
+     respond_to(&:turbo_stream)
    end
    ```
