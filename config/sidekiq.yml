@@ -2,3 +2,4 @@ concurrency: 5
 max_retries: 2
 queues:
   - [mailers, 1]
+  - [openai, 1]

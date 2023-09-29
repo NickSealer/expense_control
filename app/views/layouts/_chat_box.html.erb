@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
   <div class="chatbox-div">
     <div class="chatbox-content">
-      <%= render 'openai/messages' %>
+      <%= render 'assistant_messages/chatbox' %>
     </div>
     <div class="chatbox-actions">
       <div class="chatbox-form">
-        <%= render 'openai/form_chat' %>
+        <%= render 'assistant_messages/form_chat' %>
       </div>
   
       <div class="btn-group blink" id="chatbox-button">

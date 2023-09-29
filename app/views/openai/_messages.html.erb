@@ -1,7 +1,0 @@
-<%= turbo_stream_from(:chatbox_channel) %>
-
-<div class="chat-messages" id="chatbox-user-<%= current_user.id %>">
-  <% current_user.assistant_messages.each do |message| %>
-    <%= render 'openai/message', message: message %>
-  <% end %>
-</div>

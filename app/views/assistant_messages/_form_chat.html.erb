@@ -1,6 +1,5 @@
 <%= turbo_frame_tag 'chatbox_form' do %>
-  <% form_for :chatbox, url: chat_url, method: :post do |f| %>
-    <%= f.hidden_field :user, value: current_user.id %>
+  <% form_for :assistant_message, url: assistant_messages_url, method: :post, id: 'assistant_message_form', data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"  } do |f| %>
     <%= f.text_field :content %>
     <button type="submit" class="btn btn-success">
       <i class="fa fa-paper-plane-o" aria-hidden="true"></i>

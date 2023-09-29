@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_162631) do
   end
 
   create_table "assistant_messages", force: :cascade do |t|
-    t.text "request"
-    t.text "message"
+    t.text "request", default: ""
+    t.text "message", default: ""
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

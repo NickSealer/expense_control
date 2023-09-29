@@ -2,7 +2,7 @@
   display: none;
   border: 2px solid #c4c4c4;
   width: 100%;
-  height: 400px;
+  max-height: 400px;
   overflow-y: scroll;
   background-color: white;
   border-radius: 5px;
@@ -19,20 +19,20 @@
 
 .chatbox-form {
   display: none;
-
 }
 
 .chatbox-div {
+  width: 100%;
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 0px;
   z-index: 100;
 }
 
 .message {
   background-color: #444654;
   color: #f7f7f8;
-  padding: 15px 30px;
+  padding: 15px 50px;
   white-space: pre-line;
 }
 

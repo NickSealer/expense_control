@@ -6,8 +6,8 @@
 # Table name: assistant_messages
 #
 #  id         :bigint           not null, primary key
-#  message    :text
-#  request    :text
+#  message    :text             default("")
+#  request    :text             default("")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint

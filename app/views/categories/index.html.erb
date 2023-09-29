@@ -2,11 +2,12 @@
   <div class="card-header card-title text-info">
     <h1>Categories</h1>
     <div class="float-left">
-      <%= form_tag(categories_path, method: :get, class: "form-inline my-2 my-lg-0") %>
-      <%= text_field_tag(:search, params[:search], {class: "form-control mr-sm-2", placeholder: "Search"}) %>
-      <button class="btn btn-outline-info my-2 my-sm-0 mr-sm-2" type="submit">
-        <i class="fa fa-search-plus" aria-hidden="true"></i>
-      </button>
+      <%= form_tag(categories_path, method: :get, class: "form-inline my-2 my-lg-0") do |f| %>
+        <%= text_field_tag(:search, params[:search], {class: "form-control mr-sm-2", placeholder: "Search"}) %>
+        <button class="btn btn-outline-info my-2 my-sm-0 mr-sm-2" type="submit">
+          <i class="fa fa-search-plus" aria-hidden="true"></i>
+        </button>
+      <% end %>
     </div>
     <div class="float-right">
       <%= link_to new_category_path, class: 'btn btn-outline-success float-right', title:"New Category" do %>

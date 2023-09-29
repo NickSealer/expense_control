@@ -126,7 +126,7 @@ In this example there are:
      Rest of the code...
    </div>
    ```
-4. Controller
+4. Controller: 
    Responds as turbo_stream format. You can use update.turbo_stream.erb file or model callback as I did.
    ```ruby
    def update
@@ -143,7 +143,7 @@ In this example there are:
    ```
 3. View:
    Turbo searches the object dom id and remove the complete html piece of code
-4. Controller
+4. Controller: 
    Responds as turbo_stream format. You can use update.turbo_stream.erb file or model callback as I did.
    ```ruby
    def destroy

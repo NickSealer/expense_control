@@ -42,9 +42,7 @@ Rails.application.routes.draw do
   end
 
   # OpenAI
-  controller :openai do
-    post :chat
-  end
+  resources :assistant_messages, only: %i[create]
 
   controller :exports do
     get :export
@@ -127,7 +125,7 @@ end
 #                        read_notification GET      /notifications/:id/read(.:format)                                                                 notifications#read
 #                             notification PUT      /notifications/:id(.:format)                                                                      notifications#update
 #                                          DELETE   /notifications/:id(.:format)                                                                      notifications#destroy
-#                                     chat POST     /chat(.:format)                                                                                   openai#chat
+#                       assistant_messages POST     /assistant_messages(.:format)                                                                     assistant_messages#create
 #                                   export GET      /export(.:format)                                                                                 exports#export
 #                              data_to_csv GET      /data_to_csv(.:format)                                                                            exports#data_to_csv
 #                   search_api_v1_expenses GET      /api/v1/expenses/search(.:format)                                                                 api/v1/expenses#search
