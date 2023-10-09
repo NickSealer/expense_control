@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => 'user/sidekiq'
   end
 
-  # resources :posts
   root 'expenses#new'
 
   resources :expenses do
@@ -42,17 +41,19 @@ Rails.application.routes.draw do
     end
   end
 
-  # OpenAI
-  resources :assistant_messages, only: %i[create]
-
   controller :exports do
     get :export
     get :data_to_csv
   end
 
+  # OpenAI
+  resources :assistant_messages, only: %i[create]
+
   # API
   namespace 'api' do
     namespace 'v1' do
+      mount_devise_token_auth_for 'User', at: 'auth'
+
       resources :expenses, only: %i[index show] do
         collection do
           get :search

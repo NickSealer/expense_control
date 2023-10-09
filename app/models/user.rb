@@ -46,6 +46,7 @@ class User < ApplicationRecord
          :validatable
 
   include GraphqlDevise::Authenticatable
+  include DeviseTokenAuth::Concerns::User
 
   devise :omniauthable, omniauth_providers: [:google_oauth2]
 

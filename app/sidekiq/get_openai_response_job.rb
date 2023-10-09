@@ -17,7 +17,7 @@ class GetOpenaiResponseJob
     client.chat(
       parameters: {
         model: 'gpt-3.5-turbo',
-        messages: messages,
+        messages: messages(message),
         stream: stream_proc(message)
       }
     )

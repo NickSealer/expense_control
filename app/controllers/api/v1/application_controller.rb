@@ -3,9 +3,10 @@
 module Api
   module V1
     class ApplicationController < ActionController::API
-      include Api::V1::Auth
+      include DeviseTokenAuth::Concerns::SetUserByToken
       include Api::V1::Errors
-      before_action :authenticate
+
+      before_action :authenticate_user!
 
       def render_response(klass: nil, data: nil, status: :ok)
         return render_no_content if status == :no_content
