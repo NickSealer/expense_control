@@ -46,10 +46,12 @@ gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'devise', '~> 4.8.1'
+gem 'devise_token_auth', '~> 1.2.2'
 gem 'draper', '~> 4.0', '>= 4.0.2'
 gem 'fastercsv'
 gem 'font-awesome-sass', '~> 5.12.0'
-gem 'graphql' # rails generate graphql:install
+gem 'graphql', '~> 2.1' # rails generate graphql:install
+gem 'graphql_devise', '~> 1.3'
 gem 'image_processing', '~> 1.2'
 gem 'invisible_captcha', '~> 2.0'
 gem 'jquery-rails'

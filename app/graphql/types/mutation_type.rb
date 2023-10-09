@@ -2,7 +2,11 @@
 
 module Types
   class MutationType < Types::BaseObject
-    field :create_user, mutation: Mutations::Users::Create
+    field_class GraphqlDevise::Types::BaseField
+
+    field :logout, mutation: Mutations::Sessions::Logout
+
+    field :create_user, mutation: Mutations::Users::Create, authenticate: false
     field :update_user, mutation: Mutations::Users::Update
     field :delete_user, mutation: Mutations::Users::Delete
 

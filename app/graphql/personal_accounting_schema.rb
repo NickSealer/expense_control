@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 
 class PersonalAccountingSchema < GraphQL::Schema
+  # List of the symbols you can provide to the only option:
+  # :login
+  # :logout
+  # :register
+  # :update_password_with_token
+  # :send_password_reset_with_token
+  # :resend_confirmation_with_token
+  # :confirm_registration_with_token
+
+  use GraphqlDevise::SchemaPlugin.new(
+    query: Types::QueryType,
+    mutation: Types::MutationType,
+    resource_loaders: [
+      GraphqlDevise::ResourceLoader.new(User, only: %i[login confirm_registration_with_token])
+    ]
+  )
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 

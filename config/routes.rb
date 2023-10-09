@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount_graphql_devise_for User, at: 'graphql_auth'
   mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
 
   post '/graphql', to: 'graphql#execute'
@@ -71,13 +72,13 @@ end
 # == Route Map
 #
 #                                   Prefix Verb     URI Pattern                                                                                       Controller#Action
+#                             graphql_auth POST     /graphql_auth(.:format)                                                                           graphql_devise/graphql#auth
+#                                          GET      /graphql_auth(.:format)                                                                           graphql_devise/graphql#auth
 #                           graphiql_rails          /graphiql                                                                                         GraphiQL::Rails::Engine {:graphql_path=>"/graphql"}
 #                                  graphql POST     /graphql(.:format)                                                                                graphql#execute
 #                         new_user_session GET      /users/sign_in(.:format)                                                                          users/sessions#new
 #                             user_session POST     /users/sign_in(.:format)                                                                          users/sessions#create
 #                     destroy_user_session DELETE   /users/sign_out(.:format)                                                                         users/sessions#destroy
-#    user_google_oauth2_omniauth_authorize GET|POST /users/auth/google_oauth2(.:format)                                                               users/omniauth_callbacks#passthru
-#     user_google_oauth2_omniauth_callback GET|POST /users/auth/google_oauth2/callback(.:format)                                                      users/omniauth_callbacks#google_oauth2
 #                        new_user_password GET      /users/password/new(.:format)                                                                     devise/passwords#new
 #                       edit_user_password GET      /users/password/edit(.:format)                                                                    devise/passwords#edit
 #                            user_password PATCH    /users/password(.:format)                                                                         devise/passwords#update
@@ -90,6 +91,11 @@ end
 #                                          PUT      /users(.:format)                                                                                  users/registrations#update
 #                                          DELETE   /users(.:format)                                                                                  users/registrations#destroy
 #                                          POST     /users(.:format)                                                                                  users/registrations#create
+#                    new_user_confirmation GET      /users/confirmation/new(.:format)                                                                 devise/confirmations#new
+#                        user_confirmation GET      /users/confirmation(.:format)                                                                     devise/confirmations#show
+#                                          POST     /users/confirmation(.:format)                                                                     devise/confirmations#create
+#    user_google_oauth2_omniauth_authorize GET|POST /omniauth/google_oauth2(.:format)                                                                 users/omniauth_callbacks#passthru
+#     user_google_oauth2_omniauth_callback GET|POST /omniauth/google_oauth2/callback(.:format)                                                        users/omniauth_callbacks#google_oauth2
 #                              sidekiq_web          /user/sidekiq                                                                                     Sidekiq::Web
 #                                     root GET      /                                                                                                 expenses#new
 #                 import_csv_form_expenses GET      /expenses/import_csv_form(.:format)                                                               expenses#import_csv_form
