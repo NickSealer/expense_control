@@ -11,7 +11,7 @@ module Mutations
 
         { user: user }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end

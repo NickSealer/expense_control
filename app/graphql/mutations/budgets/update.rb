@@ -8,12 +8,12 @@ module Mutations
       argument :params, GraphQL::Types::JSON, required: true
 
       def resolve(id:, params:)
-        budget = Budget.find_by(id: id)
+        budget = current_user.budgets.find_by(id: id)
         budget&.update!(params)
 
         { budget: budget }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end

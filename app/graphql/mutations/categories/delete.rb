@@ -7,7 +7,7 @@ module Mutations
       argument :id, ID, required: true
 
       def resolve(id:)
-        category = Category.find_by(id: id)
+        category = current_user.categories.find_by(id: id)
         category&.destroy
 
         { category: category }

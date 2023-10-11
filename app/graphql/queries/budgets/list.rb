@@ -6,7 +6,7 @@ module Queries
       type [Types::BudgetType], null: false
 
       def resolve
-        Budget.all
+        current_user.budgets
       end
     end
   end

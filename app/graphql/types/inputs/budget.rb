@@ -6,7 +6,6 @@ module Types
       argument :from_date, GraphQL::Types::ISO8601Date, required: true
       argument :to_date, GraphQL::Types::ISO8601Date, required: true
       argument :enable_dynamic_cash_flow, Boolean, required: true
-      argument :user_id, ID, required: true
       argument :revenues, [Types::Inputs::Revenue], required: true
       argument :charges, [Types::Inputs::Charge], required: true
     end

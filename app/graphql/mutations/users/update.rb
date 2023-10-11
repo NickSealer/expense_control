@@ -8,12 +8,12 @@ module Mutations
       argument :params, GraphQL::Types::JSON, required: true
 
       def resolve(id:, params:)
-        user = User.find_by(id: id)
-        user&.update!(params)
+        raise_user_error(id)
+        current_user&.update!(params)
 
-        { user: user }
+        { user: current_user }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end

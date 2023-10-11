@@ -6,7 +6,7 @@ module Queries
       type [Types::UserType], null: false
 
       def resolve
-        User.all
+        User.where(id: current_user.id)
       end
     end
   end

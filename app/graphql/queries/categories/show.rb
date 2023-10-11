@@ -7,7 +7,7 @@ module Queries
       argument :id, ID, required: true
 
       def resolve(id:)
-        Category.find_by(id: id)
+        current_user.categories.find_by(id: id)
       end
     end
   end

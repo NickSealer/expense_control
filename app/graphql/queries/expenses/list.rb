@@ -6,7 +6,7 @@ module Queries
       type [Types::ExpenseType], null: false
 
       def resolve
-        Expense.all
+        current_user.expenses
       end
     end
   end

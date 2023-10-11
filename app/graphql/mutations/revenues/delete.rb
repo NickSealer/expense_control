@@ -7,7 +7,7 @@ module Mutations
       argument :id, ID, required: true
 
       def resolve(id:)
-        revenue = Revenue.find_by(id: id)
+        revenue = current_user.revenues.find_by(id: id)
         revenue&.destroy
 
         { revenue: revenue }

@@ -7,11 +7,11 @@ module Mutations
       argument :params, Types::Inputs::Revenue, required: true
 
       def resolve(params:)
-        revenue = Revenue.create!(Hash(params))
+        revenue = current_user.revenues.create!(Hash(params))
 
         { revenue: revenue }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end

@@ -7,11 +7,11 @@ module Mutations
       argument :params, Types::Inputs::Category, required: true
 
       def resolve(params:)
-        category = Category.create!(Hash(params))
+        category = current_user.categories.create!(Hash(params))
 
         { category: category }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end

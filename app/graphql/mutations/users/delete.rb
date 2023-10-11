@@ -7,10 +7,10 @@ module Mutations
       argument :id, ID, required: true
 
       def resolve(id:)
-        user = User.find_by(id: id)
-        user&.destroy
+        raise_user_error(id)
+        current_user&.destroy
 
-        { user: user }
+        { user: current_user }
       end
     end
   end

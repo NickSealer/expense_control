@@ -7,7 +7,6 @@ module Types
       argument :value, Float, required: true
       argument :date, GraphQL::Types::ISO8601Date, required: true
       argument :category_id, ID, required: true
-      argument :user_id, ID, required: true
     end
   end
 end

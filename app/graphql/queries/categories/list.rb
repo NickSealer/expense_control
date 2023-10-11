@@ -6,7 +6,7 @@ module Queries
       type [Types::CategoryType], null: false
 
       def resolve
-        Category.all
+        current_user.categories
       end
     end
   end

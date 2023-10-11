@@ -7,7 +7,7 @@ module Queries
       argument :id, ID, required: true
 
       def resolve(id:)
-        Budget.find_by(id: id)
+        current_user.budgets.find_by(id: id)
       end
     end
   end

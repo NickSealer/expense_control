@@ -7,7 +7,8 @@ module Queries
       argument :id, ID, required: true
 
       def resolve(id:)
-        User.find_by(id: id)
+        raise_user_error(id)
+        current_user
       end
     end
   end

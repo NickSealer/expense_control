@@ -7,7 +7,7 @@ module Mutations
       argument :id, ID, required: true
 
       def resolve(id:)
-        expense = Expense.find_by(id: id)
+        expense = current_user.expenses.find_by(id: id)
         expense&.destroy
 
         { expense: expense }

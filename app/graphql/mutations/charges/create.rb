@@ -7,11 +7,11 @@ module Mutations
       argument :params, Types::Inputs::Charge, required: true
 
       def resolve(params:)
-        charge = Charge.create!(Hash(params))
+        charge = current_user.charges.create!(Hash(params))
 
         { charge: charge }
       rescue ActiveRecord::RecordInvalid => e
-        GraphQL::ExecutionError.new("Invalid attributes for #{e.record.class}: #{e.record.errors.full_messages.join(', ')}")
+        raise_graphql_mutation_error(e)
       end
     end
   end
