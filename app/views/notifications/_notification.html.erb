@@ -6,7 +6,7 @@
       <span class="time-ago"><%= time_ago_in_words(notification.created_at) %></span>
     </section>
   <% end %>
-  <span class="<%= notification.read %> notification-actions" data-id="<%= notification.id %>">
+  <span class="<%= notification.read %> notification-actions">
     <%= turbo_frame_tag "update_#{notification.id}" do %>
       <%= form_with model: notification, method: :put, class: 'float-left' do |f| %>
         <button type="submit" class="turbo-action">Mark as read</button>

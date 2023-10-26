@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ExpensesController < ApplicationController
+  require 'csv'
+
   include AvatarConcern
 
   before_action :authenticate_user!
