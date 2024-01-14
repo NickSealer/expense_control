@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
                   @category = params[:category].presence
                   ExpensesQuery.search(current_user, params[:search], params[:category]).decorate
                 else
-                  current_user.expenses.current_year.includes(:category).decorate
+                  current_user.expenses.current_year.joins(:category).includes(:category).decorate
                 end
   end
 
@@ -31,10 +31,10 @@ class ExpensesController < ApplicationController
   end
 
   def update
-    attach_avatar(@expense)
-    return render :edit unless @expense.update(expense_params)
+    attach_avatar(expense)
+    return render :edit unless expense.update(expense_params)
 
-    redirect_to @expense, notice: 'Expense was successfully updated.'
+    redirect_to expense, notice: 'Expense was successfully updated.'
   end
 
   def summary

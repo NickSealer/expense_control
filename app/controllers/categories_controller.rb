@@ -31,18 +31,18 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    attach_avatar(@category)
-    return render :edit unless @category.update(category_params)
+    attach_avatar(category)
+    return render :edit unless category.update(category_params)
 
-    redirect_to @category, notice: 'Category was successfully updated.'
+    redirect_to category, notice: 'Category was successfully updated.'
   end
 
   def destroy
-    return redirect_to categories_url, alert: "Category #{@category.name} can\'t be deleted because there are associated expenses!" if @category.expenses.any?
+    return redirect_to categories_url, alert: "Category #{category.name} can\'t be deleted because there are associated expenses!" unless category.expenses_count.zero?
 
-    @category.avatar.purge
-    @category.destroy!
-    CategoryDeleteMailerJob.perform_async(current_user.id, @category.id)
+    category.avatar.purge
+    category.destroy!
+    CategoryDeleteMailerJob.perform_async(current_user.id, category.id)
     redirect_to categories_url, notice: 'Category was successfully destroyed.'
   end
 
