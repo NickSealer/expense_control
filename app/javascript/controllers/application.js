@@ -1,4 +1,5 @@
 import { Application } from "@hotwired/stimulus"
+import "@rails/request.js"
 
 const application = Application.start()
 

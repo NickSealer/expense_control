@@ -92,9 +92,6 @@ end
 #                                          PUT      /users(.:format)                                                                                  users/registrations#update
 #                                          DELETE   /users(.:format)                                                                                  users/registrations#destroy
 #                                          POST     /users(.:format)                                                                                  users/registrations#create
-#                    new_user_confirmation GET      /users/confirmation/new(.:format)                                                                 devise/confirmations#new
-#                        user_confirmation GET      /users/confirmation(.:format)                                                                     devise/confirmations#show
-#                                          POST     /users/confirmation(.:format)                                                                     devise/confirmations#create
 #    user_google_oauth2_omniauth_authorize GET|POST /omniauth/google_oauth2(.:format)                                                                 users/omniauth_callbacks#passthru
 #     user_google_oauth2_omniauth_callback GET|POST /omniauth/google_oauth2/callback(.:format)                                                        users/omniauth_callbacks#google_oauth2
 #                              sidekiq_web          /user/sidekiq                                                                                     Sidekiq::Web
@@ -132,9 +129,30 @@ end
 #                        read_notification GET      /notifications/:id/read(.:format)                                                                 notifications#read
 #                             notification PUT      /notifications/:id(.:format)                                                                      notifications#update
 #                                          DELETE   /notifications/:id(.:format)                                                                      notifications#destroy
-#                       assistant_messages POST     /assistant_messages(.:format)                                                                     assistant_messages#create
 #                                   export GET      /export(.:format)                                                                                 exports#export
 #                              data_to_csv GET      /data_to_csv(.:format)                                                                            exports#data_to_csv
+#                       assistant_messages POST     /assistant_messages(.:format)                                                                     assistant_messages#create
+#                  new_api_v1_user_session GET      /api/v1/auth/sign_in(.:format)                                                                    devise_token_auth/sessions#new
+#                      api_v1_user_session POST     /api/v1/auth/sign_in(.:format)                                                                    devise_token_auth/sessions#create
+#              destroy_api_v1_user_session DELETE   /api/v1/auth/sign_out(.:format)                                                                   devise_token_auth/sessions#destroy
+#                 new_api_v1_user_password GET      /api/v1/auth/password/new(.:format)                                                               devise_token_auth/passwords#new
+#                edit_api_v1_user_password GET      /api/v1/auth/password/edit(.:format)                                                              devise_token_auth/passwords#edit
+#                     api_v1_user_password PATCH    /api/v1/auth/password(.:format)                                                                   devise_token_auth/passwords#update
+#                                          PUT      /api/v1/auth/password(.:format)                                                                   devise_token_auth/passwords#update
+#                                          POST     /api/v1/auth/password(.:format)                                                                   devise_token_auth/passwords#create
+#          cancel_api_v1_user_registration GET      /api/v1/auth/cancel(.:format)                                                                     devise_token_auth/registrations#cancel
+#             new_api_v1_user_registration GET      /api/v1/auth/sign_up(.:format)                                                                    devise_token_auth/registrations#new
+#            edit_api_v1_user_registration GET      /api/v1/auth/edit(.:format)                                                                       devise_token_auth/registrations#edit
+#                 api_v1_user_registration PATCH    /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#update
+#                                          PUT      /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#update
+#                                          DELETE   /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#destroy
+#                                          POST     /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#create
+#               api_v1_auth_validate_token GET      /api/v1/auth/validate_token(.:format)                                                             devise_token_auth/token_validations#validate_token
+#                      api_v1_auth_failure GET|POST /api/v1/auth/failure(.:format)                                                                    devise_token_auth/omniauth_callbacks#omniauth_failure
+#                                          GET|POST /api/v1/auth/:provider/callback(.:format)                                                         devise_token_auth/omniauth_callbacks#omniauth_success
+#                                          GET|POST /omniauth/:provider/callback(.:format)                                                            devise_token_auth/omniauth_callbacks#redirect_callbacks
+#                         omniauth_failure GET|POST /omniauth/failure(.:format)                                                                       devise_token_auth/omniauth_callbacks#omniauth_failure
+#                                          GET|POST /api/v1/auth/:provider(.:format)                                                                  redirect(307)
 #                   search_api_v1_expenses GET      /api/v1/expenses/search(.:format)                                                                 api/v1/expenses#search
 #                          api_v1_expenses GET      /api/v1/expenses(.:format)                                                                        api/v1/expenses#index
 #                           api_v1_expense GET      /api/v1/expenses/:id(.:format)                                                                    api/v1/expenses#show
@@ -145,6 +163,33 @@ end
 #         turbo_recede_historical_location GET      /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
 #         turbo_resume_historical_location GET      /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET      /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
+#            rails_postmark_inbound_emails POST     /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
+#               rails_relay_inbound_emails POST     /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
+#            rails_sendgrid_inbound_emails POST     /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
+#      rails_mandrill_inbound_health_check GET      /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#health_check
+#            rails_mandrill_inbound_emails POST     /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#create
+#             rails_mailgun_inbound_emails POST     /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)                                       action_mailbox/ingresses/mailgun/inbound_emails#create
+#           rails_conductor_inbound_emails GET      /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#index
+#                                          POST     /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#create
+#        new_rails_conductor_inbound_email GET      /rails/conductor/action_mailbox/inbound_emails/new(.:format)                                      rails/conductor/action_mailbox/inbound_emails#new
+#       edit_rails_conductor_inbound_email GET      /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)                                 rails/conductor/action_mailbox/inbound_emails#edit
+#            rails_conductor_inbound_email GET      /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#show
+#                                          PATCH    /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#update
+#                                          PUT      /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#update
+#                                          DELETE   /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#destroy
+# new_rails_conductor_inbound_email_source GET      /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format)                              rails/conductor/action_mailbox/inbound_emails/sources#new
+#    rails_conductor_inbound_email_sources POST     /rails/conductor/action_mailbox/inbound_emails/sources(.:format)                                  rails/conductor/action_mailbox/inbound_emails/sources#create
+#    rails_conductor_inbound_email_reroute POST     /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)                               rails/conductor/action_mailbox/reroutes#create
+# rails_conductor_inbound_email_incinerate POST     /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format)                            rails/conductor/action_mailbox/incinerates#create
+#                       rails_service_blob GET      /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
+#                 rails_service_blob_proxy GET      /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
+#                                          GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
+#                rails_blob_representation GET      /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
+#          rails_blob_representation_proxy GET      /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
+#                                          GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
+#                       rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
+#                update_rails_disk_service PUT      /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
+#                     rails_direct_uploads POST     /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 #
 # Routes for GraphiQL::Rails::Engine:
 #        GET  /           graphiql/rails/editors#show

@@ -1,4 +1,0 @@
-# .rusky
-pre-commit:
-  - rubocop
-  - bundle exec rspec

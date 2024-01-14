@@ -43,7 +43,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :trackable,
-         :validatable
+         :validatable,
+         :confirmable
 
   include GraphqlDevise::Authenticatable
   include DeviseTokenAuth::Concerns::User
