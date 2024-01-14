@@ -1,4 +1,3 @@
-<%= hidden_field_tag "current_user", @current_user.id %>
 <%= form_with(model: @expense, local: true) do |form| %>
 <% if @expense.errors.any? %>
 <div class="alert-danger errors" role="alert">

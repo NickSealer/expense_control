@@ -32,7 +32,13 @@ Rails.application.routes.draw do
   end
 
   resources :budgets
-  resources :categories
+
+  resources :categories do
+    collection do
+      get :search
+    end
+  end
+
   resources :notifications, only: [] do
     member do
       get :read

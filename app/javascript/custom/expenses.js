@@ -20,10 +20,9 @@ document.addEventListener("turbo:load", function() {
     function search_category(){
       var protocol = location.protocol;
       var host = location.host;
-      var user = $('#current_user').val();
-      var url = "/api/v1/categories/search/?user=" + user + "&&query=";
+      var url = "/categories/search?query=" + $('#search_category').val();
 
-      fetch(protocol + "//" + host + url + $('#search_category').val())
+      fetch(protocol + "//" + host + url)
       .then(res => res.json())
       .then(data => {
         let categories = data.data

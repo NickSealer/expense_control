@@ -16,6 +16,11 @@ class CategoriesController < ApplicationController
     @category ||= current_user.categories.new
   end
 
+  def search
+    categories = CategoriesQuery.search(current_user, params[:query])
+    render json: { data: categories }, status: :ok
+  end
+
   def create
     @category = current_user.categories.new(category_params)
     attach_avatar(@category)
