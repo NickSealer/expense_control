@@ -18,6 +18,17 @@
         <%= form.text_field :description, class: "form-control", placeholder: "Description" %>
       </div>
     </div>
+    <div class="form-row" data-controller="categories">
+      <div class="form-group col-md-6">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text">Priority</label>
+          </div>
+          <%= form.select :priority, select_category_priority_options(@category.priority), { include_blank: false }, { class:"custom-select", data: { controller: "categories", action: "change->categories#colors", categories_category_id_value: @category.id } } %>
+        </div>
+      </div>
+      <%= render 'categories/colors', priority: @category.priority, selected_color: @category.color %>
+    </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <div class="input-group mb-3">

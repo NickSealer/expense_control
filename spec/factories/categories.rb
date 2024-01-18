@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 # == Schema Information
-# Schema version: 20230922180137
+# Schema version: 20240116202853
 #
 # Table name: categories
 #
 #  id             :bigint           not null, primary key
+#  color          :string           default("white")
 #  description    :string
 #  expenses_count :integer
 #  name           :string
+#  priority       :integer          default("standard")
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  parent_id      :integer

@@ -1,0 +1,8 @@
+<div class="form-group col-md-6" id="category-colors-id">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text">Color</label>
+    </div>
+    <%= select_tag 'category[color]', select_category_colors_options(priority, selected_color), { include_blank: false , class:"custom-select" } %>
+  </div>
+</div>

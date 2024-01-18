@@ -21,6 +21,14 @@ class CategoriesController < ApplicationController
     render json: { data: categories }, status: :ok
   end
 
+  def colors
+    category = Category.find_by(id: params[:id]) || Category.new
+
+    respond_to do |format|
+      format.turbo_stream { render 'categories/colors', locals: { priority: params[:priority], selected_color: category.color } }
+    end
+  end
+
   def create
     @category = current_user.categories.new(category_params)
     attach_avatar(@category)
@@ -57,6 +65,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:name, :description, :parent_id, :user_id)
+    params.require(:category).permit(:name, :description, :parent_id, :user_id, :priority, :color)
   end
 end

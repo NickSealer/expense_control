@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/colors', to: 'categories#colors', as: :colors
+
   resources :notifications, only: [] do
     member do
       get :read
@@ -98,6 +100,9 @@ end
 #                                          PUT      /users(.:format)                                                                                  users/registrations#update
 #                                          DELETE   /users(.:format)                                                                                  users/registrations#destroy
 #                                          POST     /users(.:format)                                                                                  users/registrations#create
+#                    new_user_confirmation GET      /users/confirmation/new(.:format)                                                                 devise/confirmations#new
+#                        user_confirmation GET      /users/confirmation(.:format)                                                                     devise/confirmations#show
+#                                          POST     /users/confirmation(.:format)                                                                     devise/confirmations#create
 #    user_google_oauth2_omniauth_authorize GET|POST /omniauth/google_oauth2(.:format)                                                                 users/omniauth_callbacks#passthru
 #     user_google_oauth2_omniauth_callback GET|POST /omniauth/google_oauth2/callback(.:format)                                                        users/omniauth_callbacks#google_oauth2
 #                              sidekiq_web          /user/sidekiq                                                                                     Sidekiq::Web
@@ -124,6 +129,7 @@ end
 #                                          PATCH    /budgets/:id(.:format)                                                                            budgets#update
 #                                          PUT      /budgets/:id(.:format)                                                                            budgets#update
 #                                          DELETE   /budgets/:id(.:format)                                                                            budgets#destroy
+#                        search_categories GET      /categories/search(.:format)                                                                      categories#search
 #                               categories GET      /categories(.:format)                                                                             categories#index
 #                                          POST     /categories(.:format)                                                                             categories#create
 #                             new_category GET      /categories/new(.:format)                                                                         categories#new
@@ -132,6 +138,7 @@ end
 #                                          PATCH    /categories/:id(.:format)                                                                         categories#update
 #                                          PUT      /categories/:id(.:format)                                                                         categories#update
 #                                          DELETE   /categories/:id(.:format)                                                                         categories#destroy
+#                                   colors GET      /colors(.:format)                                                                                 categories#colors
 #                        read_notification GET      /notifications/:id/read(.:format)                                                                 notifications#read
 #                             notification PUT      /notifications/:id(.:format)                                                                      notifications#update
 #                                          DELETE   /notifications/:id(.:format)                                                                      notifications#destroy
@@ -153,6 +160,9 @@ end
 #                                          PUT      /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#update
 #                                          DELETE   /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#destroy
 #                                          POST     /api/v1/auth(.:format)                                                                            devise_token_auth/registrations#create
+#             new_api_v1_user_confirmation GET      /api/v1/auth/confirmation/new(.:format)                                                           devise_token_auth/confirmations#new
+#                 api_v1_user_confirmation GET      /api/v1/auth/confirmation(.:format)                                                               devise_token_auth/confirmations#show
+#                                          POST     /api/v1/auth/confirmation(.:format)                                                               devise_token_auth/confirmations#create
 #               api_v1_auth_validate_token GET      /api/v1/auth/validate_token(.:format)                                                             devise_token_auth/token_validations#validate_token
 #                      api_v1_auth_failure GET|POST /api/v1/auth/failure(.:format)                                                                    devise_token_auth/omniauth_callbacks#omniauth_failure
 #                                          GET|POST /api/v1/auth/:provider/callback(.:format)                                                         devise_token_auth/omniauth_callbacks#omniauth_success
