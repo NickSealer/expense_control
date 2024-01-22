@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Post < ApplicationRecord
-  after_create_commit -> { broadcast_replace_to(:posts_channel, target: 'posts', partial: 'posts/posts') }
+  after_create_commit -> { broadcast_replace_to(:posts_channel, target: 'posts', partial: 'posts/count') }
   after_create_commit lambda {
                         broadcast_prepend_to(:table_posts_channel, target: 'broadcast_body',
                                                                    partial: 'posts/table_body')

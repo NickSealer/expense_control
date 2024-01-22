@@ -1,5 +1,4 @@
-<%= turbo_frame_tag 'post_form' do %>
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, style: 'background-color: white;') do |form| %>
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -20,5 +19,4 @@
   <div>
     <%= form.submit %>
   </div>
-<% end %>
 <% end %>

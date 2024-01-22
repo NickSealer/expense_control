@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
   # OpenAI
   resources :assistant_messages, only: %i[create]
+  resources :posts
 
   # API
   namespace 'api' do

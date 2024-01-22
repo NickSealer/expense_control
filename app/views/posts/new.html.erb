@@ -1,9 +1,13 @@
 <h1>New post</h1>
 
+<%= turbo_frame_tag 'new_post_turbo_frame' do %>
 <%= render "form", post: @post %>
 
 <br>
 
 <div>
-  <%= link_to "Back to posts", posts_path %>
+  <%= link_to sanitize("&larr; Back to posts"), posts_path %>
 </div>
+<% end %>
+
+

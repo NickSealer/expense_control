@@ -1,21 +1,28 @@
+<%= turbo_frame_tag 'new_post_turbo_frame' do %>
 <h1>New post</h1>
-<%= render "form", post: Post.new %>
+<%= link_to 'New Post', new_post_path %>
+<%# render "form", post: Post.new %>
+<% end %>
+
 <br>
 
 <div class="posts">
   <%= turbo_stream_from(:posts_channel) %>
   <%# turbo frame start %>
-    <%= render 'posts/posts' %>
+    <%= render 'posts/count' %>
   <%# turbo frame end %>
 </div>
+
 <br>
-<div>
+
+<div style="background-color: white;">
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Created at</th>
         <th>Message</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <%= turbo_stream_from(:table_posts_channel) %>
@@ -25,6 +32,15 @@
           <td><%= post.id %></td>
           <td><%= post.created_at %></td>
           <td><%= post.message %></td>
+          <td>
+            <%= turbo_frame_tag "show_post_#{post.id}" do %>
+              <%= link_to "Show", post_path(post) %>
+            <% end %>
+            <%= turbo_frame_tag "edit_post_#{post.id}" do %>
+              <%= link_to "Edit", edit_post_path(post) %>
+            <% end %>
+            <%= link_to "Delete", post_path(post), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>
