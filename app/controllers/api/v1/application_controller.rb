@@ -6,8 +6,6 @@ module Api
       include DeviseTokenAuth::Concerns::SetUserByToken
       include Api::V1::Errors
 
-      before_action :authenticate_user!
-
       def render_response(klass: nil, data: nil, status: :ok)
         return render_no_content if status == :no_content
         return render_collection_response(klass, data, status) if data.respond_to?(:each)
