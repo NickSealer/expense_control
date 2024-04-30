@@ -9,6 +9,6 @@ class CategoryDecorator < Draper::Decorator
   end
 
   def link_to_expenses
-    link_to(expenses_count, expenses_path(category: id))
+    link_to(expenses_count || 0, expenses_path(category: id))
   end
 end
