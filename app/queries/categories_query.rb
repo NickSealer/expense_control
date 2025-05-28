@@ -5,7 +5,7 @@ class CategoriesQuery
     delegate :search, to: :new
   end
 
-  def initialize(categories = Category.joins(:expenses).includes(:expenses).all)
+  def initialize(categories = Category.all)
     @categories = categories
   end
 
